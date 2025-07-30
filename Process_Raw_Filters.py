@@ -31,7 +31,7 @@ with open(input_file, 'r', encoding='utf-8') as f:
             domains.append(value)
 
 # Write output files with no headers
-with open('ADBLOCK_RULE_COLLECTION_RAW_DOMAINS.txt', 'w', encoding='utf-8') as f:
+with open('ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt', 'w', encoding='utf-8') as f:
     f.write('\n'.join(domains) + '\n')
 
 with open('ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt', 'w', encoding='utf-8') as f:
