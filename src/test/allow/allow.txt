@@ -1,0 +1,14 @@
+||allowme.com^
+||removemeb.com^
+
+||sub.allowme.com^
+||sub.removemeb.com^
+
+@@||allowmea.com^
+@@||removemeab.com^
+
+@@||sub.allowmea.com^
+@@||sub.removemeab.com^
+
+#comment
+!comment

@@ -1,0 +1,10 @@
+!Title: Remote Access tools
+!Description: A simple list of sites that contain remote access tools
+!Homepage: https://github.com/TheEndBoss101-Web/blocklists-simple
+
+anydesk.com
+ultraviewer.net
+zoho.com
+zoho.in
+join.zoho.in
+join.zoho.com

@@ -1,0 +1,5 @@
+!Title: Scam-Linked Domains
+!Description: A simple list of sites that are linked to scams
+!Homepage: https://github.com/TheEndBoss101-Web/blocklists-simple
+
+helpme16.com

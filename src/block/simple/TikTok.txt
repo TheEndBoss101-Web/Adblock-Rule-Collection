@@ -1,0 +1,38 @@
+!Title: TikTok
+!Description: Blocks TikTok
+!Homepage: https://github.com/TheEndBoss101-Web/blocklists-simple
+
+||api-h2.tiktokv.com^
+||api.tiktokv.com^
+||api2-16-h2.musical.ly^
+||api2-21-h2.musical.ly^
+||api2.musical.ly^
+||api21-h2.tiktokv.com^
+||ib.tiktokv.com^
+||log.tiktokv.com^
+||log2.musical.ly^
+||m.tiktok.com^
+||mon.musical.ly^
+||muscdn.com^
+||musemuse.cn^
+||musica.ly^
+||p16-tiktokcdn-com.akamaized.net^
+||tiktok.com^
+||tiktok.com.c.footprint.net^
+||tiktok.net^
+||tiktokcdn-com.akamaized.net^
+||tiktokcdn-eu.com^
+||tiktokcdn-us.com^
+||tiktokcdn.com^
+||tiktokcdn.com.c.worldfcdn.com^
+||tiktokcdn.com.wsdvs.com^
+||tiktokcdn.liveplay.myqcloud.com^
+||tiktokv.com^
+||tiktokv.us^
+||tiktokw.us^
+||v.tiktok.com^
+||v.tiktok.net^
+||v16a.tiktokcdn.com^
+||v16m.tiktokcdn.com^
+||v19.tiktokcdn.com^
+||www.tiktok.com^
