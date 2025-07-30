@@ -1,0 +1,8 @@
+ADBLOCK_RULE_COLLECTION.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_DNS.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_DOMAIN.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_HOST_RAW_DOMAINS.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_HOST_RAW_IPV4.txt filter=lfs diff=lfs merge=lfs -text
+ADBLOCK_RULE_COLLECTION_HOST_RAW_IPV6.txt filter=lfs diff=lfs merge=lfs -text
