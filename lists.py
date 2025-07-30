@@ -493,6 +493,11 @@ filter_urls = [
     "https://raw.githubusercontent.com/durablenapkin/scamblocklist/master/adguard.txt",
     "https://malware-filter.gitlab.io/malware-filter/phishing-filter-agh.txt",
     "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-agh-online.txt",
+
+    # BlockLists
+    "https://raw.githubusercontent.com/TheEndBoss101-Web/Adblock-Rule-Collection/refs/heads/master/src/block/malware.txt",
+    "https://raw.githubusercontent.com/TheEndBoss101-Web/Adblock-Rule-Collection/refs/heads/master/src/block/simple/Missed.txt",
+    "https://raw.githubusercontent.com/TheEndBoss101-Web/Adblock-Rule-Collection/refs/heads/master/src/block/ScamLinkedDomains.txt",
 ]
 allowlist_urls = [
     "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_allowlist.txt",
