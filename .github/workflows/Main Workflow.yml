@@ -2,7 +2,7 @@ name: Main Workflow
 
 on:
   schedule:
-    - cron: "0 1 * * *"  # Run daily at 1:00 AM
+    - cron: "0 0 * * *" # Run daily at 1:00 AM
   push:
     branches:
       - master
@@ -13,151 +13,151 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytz requests aiohttp
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytz requests aiohttp
 
-    - name: Get current time
-      id: current-time
-      run: echo "time=$(date +'%y%m%d%H%M')" >> $GITHUB_ENV
+      - name: Get current time
+        id: current-time
+        run: echo "time=$(date +'%y%m%d%H%M')" >> $GITHUB_ENV
 
-    - name: Update timestamp file
-      run: echo "${{ env.time }}" > timestamp.txt
+      - name: Update timestamp file
+        run: echo "${{ env.time }}" > timestamp.txt
 
-    - name: Run Adblock Rule Generator
-      run: python Adblock_Rule_Generator.py
+      - name: Run Adblock Rule Generator
+        run: python Adblock_Rule_Generator.py
 
-    - name: Run Process Filters
-      run: python Process_Filters.py
+      - name: Run Process Filters
+        run: python Process_Filters.py
 
-    - name: Run Process Raw Filters
-      run: python Process_Raw_Filters.py
+      - name: Run Process Raw Filters
+        run: python Process_Raw_Filters.py
 
-#    - name: Commit and push changes
-#      id: push_changes
-#      run: |
-#        git config --global user.name "github-actions[bot]"
-#        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-#        git add ADBLOCK_RULE_COLLECTION*.txt timestamp.txt
-#        git commit -m "Update Adblock rules" || echo "No changes to commit"
-#        for attempt in {1..5}; do
-#          echo "Attempt $attempt: Pulling latest changes from remote..."
-#          if git pull --rebase; then
-#            echo "Pull successful."
-#          else
-#            echo "Pull failed, continuing..."
-#          fi
-#
-#          if git push; then
-#            echo "Push successful."
-#            exit 0
-#          else
-#            echo "Push failed, retrying in $((attempt * 10)) seconds..."
-#            sleep $((attempt * 10))
-#          fi
-#        done
-#        echo "Push failed after multiple attempts, exiting with error."
-#        exit 1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    - name: Commit and push changes
+      #      id: push_changes
+      #      run: |
+      #        git config --global user.name "github-actions[bot]"
+      #        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #        git add ADBLOCK_RULE_COLLECTION*.txt timestamp.txt
+      #        git commit -m "Update Adblock rules" || echo "No changes to commit"
+      #        for attempt in {1..5}; do
+      #          echo "Attempt $attempt: Pulling latest changes from remote..."
+      #          if git pull --rebase; then
+      #            echo "Pull successful."
+      #          else
+      #            echo "Pull failed, continuing..."
+      #          fi
+      #
+      #          if git push; then
+      #            echo "Push successful."
+      #            exit 0
+      #          else
+      #            echo "Push failed, retrying in $((attempt * 10)) seconds..."
+      #            sleep $((attempt * 10))
+      #          fi
+      #        done
+      #        echo "Push failed after multiple attempts, exiting with error."
+      #        exit 1
+      #      env:
+      #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: release-${{ env.time }}
-        release_name: Release ${{ env.time }}
-        body: "Periodic release of adblock files."
-        draft: false
-        prerelease: false
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: release-${{ env.time }}
+          release_name: Release ${{ env.time }}
+          body: "Periodic release of adblock files."
+          draft: false
+          prerelease: false
 
-    - name: Upload ADBLOCK_RULE_COLLECTION.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION.txt
-        asset_name: ADBLOCK_RULE_COLLECTION.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION.txt
+          asset_name: ADBLOCK_RULE_COLLECTION.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt
-        asset_name: ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt
+          asset_name: ADBLOCK_RULE_COLLECTION_HOST_IPV4.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_DNS.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION_DNS.txt
-        asset_name: ADBLOCK_RULE_COLLECTION_DNS.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_DNS.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION_DNS.txt
+          asset_name: ADBLOCK_RULE_COLLECTION_DNS.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt
-        asset_name: ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt
+          asset_name: ADBLOCK_RULE_COLLECTION_HOST_IPV6.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_DOMAIN.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION_DOMAIN.txt
-        asset_name: ADBLOCK_RULE_COLLECTION_DOMAIN.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_DOMAIN.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION_DOMAIN.txt
+          asset_name: ADBLOCK_RULE_COLLECTION_DOMAIN.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt
-        asset_name: ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt
+          asset_name: ADBLOCK_RULE_COLLECTION_RAW_DOMAIN.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt
-        asset_name: ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt
+          asset_name: ADBLOCK_RULE_COLLECTION_RAW_IPV4.txt
+          asset_content_type: text/plain
 
-    - name: Upload ADBLOCK_RULE_COLLECTION_RAW_IPV6.txt
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_name: ADBLOCK_RULE_COLLECTION_RAW_IPV6.txt
-        asset_path: ADBLOCK_RULE_COLLECTION_RAW_IPV6.txt
-        asset_content_type: text/plain
+      - name: Upload ADBLOCK_RULE_COLLECTION_RAW_IPV6.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ADBLOCK_RULE_COLLECTION_RAW_IPV6.txt
+          asset_path: ADBLOCK_RULE_COLLECTION_RAW_IPV6.txt
+          asset_content_type: text/plain

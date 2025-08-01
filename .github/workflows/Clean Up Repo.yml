@@ -1,9 +1,9 @@
 name: Clean Up Repo
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs every midnight
-  workflow_dispatch:  # Allows manual triggering
+  #schedule:
+  #  - cron: '0 0 * * *'  # Runs every midnight
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   delete-all-workflows:
@@ -16,23 +16,23 @@ jobs:
           # Get repository information
           repo_info=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}")
-          
+
           # Check if repository information was successfully retrieved
           if [ $(echo "$repo_info" | jq -r '.message // empty') = "Not Found" ]; then
             echo "Error: Unable to access repository. Please check your permissions."
             exit 1
           fi
-          
+
           # Extract owner and repository name
           OWNER=$(echo "$repo_info" | jq -r '.owner.login')
           REPO=$(echo "$repo_info" | jq -r '.name')
-          
+
           echo "Repository: $OWNER/$REPO"
-          
+
           # Set pagination parameters
           per_page=100
           page=1
-          
+
           while true; do
             echo "Fetching page $page of all workflow runs..."
             
@@ -94,7 +94,7 @@ jobs:
             # Increment page number to fetch the next page of results
             page=$((page + 1))
           done
-          
+
           echo "All workflow runs have been processed."
   delete-all-tags:
     runs-on: ubuntu-latest
@@ -105,7 +105,7 @@ jobs:
           tags=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                "https://api.github.com/repos/${{ github.repository }}/git/refs/tags" \
                | jq -r '.[].ref' | sed 's|refs/tags/||')
-          
+
           # Iterate over and delete each tag
           for tag in $tags
           do
