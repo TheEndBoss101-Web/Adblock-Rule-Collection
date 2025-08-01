@@ -428,6 +428,31 @@ filter_urls = [
     "https://raw.githubusercontent.com/durablenapkin/scamblocklist/master/adguard.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/refs/heads/master/filters/badware.txt",
     
+    # hagezi
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/pro.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt",
+
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/fake.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/popupads.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/tif.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/ips/tif.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/nsfw.txt",
+
+    # hagezi Trackers
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.amazon.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.apple.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.huawei.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.winoffice.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.extended.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.lgwebos.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.roku.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.vivo.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.oppo-realme.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.xiaomi.txt",
+
     # My list
     "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts",
     "https://big.oisd.nl/",
