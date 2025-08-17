@@ -2,8 +2,8 @@
 @@||local.theendboss101.com^
 @@||4chan.org^
 
-login.live.com
-login.microsoftonline.com
+@@||login.live.com^
+@@||login.microsoftonline.com^
 
 @@||main.vscode-cdn.net^
 @@||xmrig.com^
@@ -20,3 +20,8 @@ login.microsoftonline.com
 @@||js.rbxcdn.com^
 @@||static.rbxcdn.com^
 @@||images.rbxcdn.com^
+@@||badges.roblox.com^
+@@||games.roblox.com^
+@@||create.roblox.com^
+@@||github.com^
+@@||release-assets.githubusercontent.com^
