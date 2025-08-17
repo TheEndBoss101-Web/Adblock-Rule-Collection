@@ -18,6 +18,7 @@
 @@||apis.roblox.com^
 @@||auth.roblox.com^
 @@||js.rbxcdn.com^
+@@||css.rbxcdn.com^
 @@||static.rbxcdn.com^
 @@||images.rbxcdn.com^
 @@||badges.roblox.com^
