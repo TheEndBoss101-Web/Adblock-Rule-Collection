@@ -18,3 +18,5 @@ login.microsoftonline.com
 @@||apis.roblox.com^
 @@||auth.roblox.com^
 @@||js.rbxcdn.com^
+@@||static.rbxcdn.com^
+@@||images.rbxcdn.com^
