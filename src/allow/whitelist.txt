@@ -2,4 +2,19 @@
 @@||local.theendboss101.com^
 @@||4chan.org^
 
+login.live.com
+login.microsoftonline.com
+
 @@||main.vscode-cdn.net^
+@@||xmrig.com^
+@@||hashvault.pro^
+@@||monero.hashvault.pro^
+@@||pool.hashvault.pro^
+@@||vscode.download.prss.microsoft.com^
+@@||update.code.visualstudio.com^
+@@||steamstatic.com.edgesuite.net^
+@@||akamai.steamstatic.com^
+@@||tr.rbxcdn.com^
+@@||apis.roblox.com^
+@@||auth.roblox.com^
+@@||js.rbxcdn.com^
