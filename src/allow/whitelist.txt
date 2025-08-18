@@ -26,3 +26,5 @@
 @@||create.roblox.com^
 @@||github.com^
 @@||release-assets.githubusercontent.com^
+@@||docker.com^
+@@||download.docker.com^
